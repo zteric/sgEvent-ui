@@ -1,0 +1,23 @@
+{
+  "name": "community-event",
+  "version": "1.0.0",
+  "private": true,
+  "description": "community-event",
+  "author": "Kaidi Zhang",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^5.13.2",
+    "gatsby-plugin-sitemap": "^6.13.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
