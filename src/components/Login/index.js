@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { Grid, Typography, Button } from "@mui/material";
 import { useLoginMutation } from "../../services/auth.service";
+import { authSelector } from "../../state/auth/slice";
+import { navigate } from "gatsby";
+import { useSelector } from "react-redux";
 
 export default function Login() {
-  const [requestLogin, { isSuccess, isLoading }] = useLoginMutation();
+  const [requestLogin, { data, isSuccess, isLoading }] = useLoginMutation();
+  const { userInfo, isLoggedin } = useSelector((state) => authSelector(state));
 
   const onLogin = () => {
     requestLogin();
   };
-  return (
+
+  useEffect(() => {
+    if (userInfo.username || (isSuccess && data.data.username)) {
+      navigate("/home");
+    }
+  }, [isSuccess, userInfo, data]);
+
+  return isLoggedin ? null : (
     <Grid
       container
       spacing={2}

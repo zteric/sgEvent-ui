@@ -8,9 +8,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { authSelector } from "../../state/auth/slice";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { userInfo } = useSelector((state) => authSelector(state));
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -34,7 +37,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Welcome
+            Welcome, {userInfo.firstname}
           </Typography>
 
           <div>
